@@ -1,0 +1,88 @@
+<Schema name="default">
+
+    <Cube name="Sales">
+
+        <Table name="sales_fact" primary_key="mun_id" />
+
+        <!--Time Dimension with two Hierarchies-->
+        <Dimension name="Time" foreign_key="date_id">
+            <Hierarchy name="Calendar Time" primary_key="date_id">
+                <Table name="dim_date" />
+                <Level name="Year" key_column="year" key_type="nontext" />
+                <Level name="Month" key_column="month" name_column="month_name" key_type="nontext" />
+                <Level name="Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+            </Hierarchy>
+
+            <Hierarchy name="Fiscal Time" primary_key="date_id">
+                <Table name="dim_date" />
+                <Level name="Year" key_column="year" key_type="nontext" />
+                <Level name="Quarter" key_column="quarter" key_type="text" />
+                <Level name="Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+            </Hierarchy>
+        </Dimension>
+
+        <!--Origin Country Dimension-->
+        <Dimension name="Origin Country" foreign_key="origin_country_id">
+            <Hierarchy name="Origin Country" primary_key="origin_country_id">
+                <Table name="dim_country" />
+                <Level name="Origin Country" key_column="country_id" name_column="country_name">
+                    <Property name="ISO 2" column="country_iso2" caption_set="en" />
+                </Level>
+            </Hierarchy>
+        </Dimension>
+
+        <!--Destination Country Dimension-->
+        <Dimension name="Destination Country" foreign_key="destination_country_id">
+            <Hierarchy name="Destination Country" primary_key="destination_country_id">
+                <Table name="dim_country" />
+                <Level name="Destination Country" key_column="country_id" name_column="country_name">
+                    <Property name="ISO 2" column="country_iso2" caption_set="en" />
+                </Level>
+            </Hierarchy>
+        </Dimension>
+
+        <!--Product Dimension-->
+        <Dimension name="Product" foreign_key="product_id">
+            <Hierarchy name="Product" primary_key="product_id">
+                <Table name="dim_product" />
+                <Level name="Product" key_column="product_id" name_column="product_name_en">
+                    <Property name="Product Name ES" column="product_name_es" caption_set="es" />
+                </Level>
+            </Hierarchy>
+        </Dimension>
+
+        <!--Category Dimension-->
+        <Dimension name="Product Category" foreign_key="category_id">
+            <Hierarchy name="Product Category" primary_key="category_id">
+                <Table name="dim_category" />
+                <Level name="Product Category" key_column="category_id" name_column="category_name" />
+            </Hierarchy>
+        </Dimension>
+
+        <!--Color Dimension-->
+        <Dimension name="Product Color" foreign_key="color_id">
+            <Hierarchy name="Product Color" primary_key="color_id">
+                <Table name="dim_color" />
+                <Level name="Product Color" key_column="color_id" name_column="color_name" />
+            </Hierarchy>
+        </Dimension>
+
+        <!--MEASURES-->
+        <Measure name="Duration" column="duration" aggregator="sum">
+            <Annotation name="details">Duration of Teleportation</Annotation>
+            <Annotation name="units">Minutes</Annotation>
+        </Measure>
+
+        <Measure name="Units" column="units" aggregator="sum">
+            <Annotation name="details">Units of Product</Annotation>
+            <Annotation name="units">Units</Annotation>
+        </Measure>
+
+        <Measure name="Amount" column="amount" aggregator="sum">
+            <Annotation name="details">Value of Sale</Annotation>
+            <Annotation name="units">Dollars</Annotation>
+        </Measure>
+
+    </Cube>
+
+</Schema>
