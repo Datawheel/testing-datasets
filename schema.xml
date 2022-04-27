@@ -9,8 +9,12 @@
             <Hierarchy name="Calendar Time" primary_key="date_id">
                 <Table name="dim_date" />
                 <Level name="Year" key_column="year" key_type="nontext" />
-                <Level name="Month" key_column="month" name_column="month_name" key_type="nontext" />
-                <Level name="Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+                <Level name="Month" key_column="month" name_column="month_name_en" key_type="nontext">
+                    <Property name="Month ES" column="month_name_es" caption_set="es" />
+                </Level>
+                <Level name="Day" key_column="date_id" name_column="day_name_en" key_type="nontext">
+                    <Property name="Day ES" column="day_name_es" caption_set="es" />
+                </Level>
             </Hierarchy>
 
             <Hierarchy name="Fiscal Time" primary_key="date_id">
