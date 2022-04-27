@@ -19,9 +19,9 @@
 
             <Hierarchy name="Fiscal Time" primary_key="date_id">
                 <Table name="dim_date" />
-                <Level name="Year" key_column="year" key_type="nontext" />
-                <Level name="Quarter" key_column="quarter" key_type="text" />
-                <Level name="Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+                <Level name="Fiscal Year" key_column="year" key_type="nontext" />
+                <Level name="Fiscal Quarter" key_column="quarter" key_type="text" />
+                <Level name="Fiscal Day" key_column="date_id" name_column="day_name" key_type="nontext" />
             </Hierarchy>
         </Dimension>
 
