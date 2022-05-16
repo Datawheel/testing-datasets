@@ -9,15 +9,19 @@
             <Hierarchy name="Calendar Time" primary_key="date_id">
                 <Table name="dim_date" />
                 <Level name="Year" key_column="year" key_type="nontext" />
-                <Level name="Month" key_column="month" name_column="month_name" key_type="nontext" />
-                <Level name="Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+                <Level name="Month" key_column="month" name_column="month_name_en" key_type="nontext">
+                    <Property name="Month ES" column="month_name_es" caption_set="es" />
+                </Level>
+                <Level name="Day" key_column="date_id" name_column="day_name_en" key_type="nontext">
+                    <Property name="Day ES" column="day_name_es" caption_set="es" />
+                </Level>
             </Hierarchy>
 
             <Hierarchy name="Fiscal Time" primary_key="date_id">
                 <Table name="dim_date" />
-                <Level name="Year" key_column="year" key_type="nontext" />
-                <Level name="Quarter" key_column="quarter" key_type="text" />
-                <Level name="Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+                <Level name="Fiscal Year" key_column="year" key_type="nontext" />
+                <Level name="Fiscal Quarter" key_column="quarter" key_type="text" />
+                <Level name="Fiscal Day" key_column="date_id" name_column="day_name" key_type="nontext" />
             </Hierarchy>
         </Dimension>
 
@@ -55,7 +59,9 @@
         <Dimension name="Product Category" foreign_key="category_id">
             <Hierarchy name="Product Category" primary_key="category_id">
                 <Table name="dim_category" />
-                <Level name="Product Category" key_column="category_id" name_column="category_name" />
+                <Level name="Product Category" key_column="category_id" name_column="category_name_en">
+                    <Property name="Product Category ES" column="category_name_es" caption_set="es" />
+                </Level>
             </Hierarchy>
         </Dimension>
 
@@ -63,7 +69,9 @@
         <Dimension name="Product Color" foreign_key="color_id">
             <Hierarchy name="Product Color" primary_key="color_id">
                 <Table name="dim_color" />
-                <Level name="Product Color" key_column="color_id" name_column="color_name" />
+                <Level name="Product Color" key_column="color_id" name_column="color_name_en">
+                    <Property name="Product Color ES" column="color_name_es" caption_set="es" />
+                </Level>
             </Hierarchy>
         </Dimension>
 

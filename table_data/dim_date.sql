@@ -4,8 +4,10 @@ CREATE TABLE default.dim_date
     `year` Int64,
     `quarter` String,
     `month` Int64,
-    `month_name` String,
-    `day_name` String
+    `month_name_en` String,
+    `day_name_en` String,
+    `month_name_es` String,
+    `day_name_es` String
 )
 ENGINE = MergeTree
 ORDER BY date_id
