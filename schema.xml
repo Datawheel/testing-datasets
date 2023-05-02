@@ -8,20 +8,22 @@
         <Dimension name="Time" foreign_key="date_id">
             <Hierarchy name="Calendar Time" primary_key="date_id">
                 <Table name="dim_date" />
-                <Level name="Year" key_column="year" key_type="nontext" />
-                <Level name="Month" key_column="month" name_column="month_name_en" key_type="nontext">
-                    <Property name="Month ES" key_column="month_name_es"/>
+
+                <Level name="Year" key_column="year" key_type="i16" />
+                <Level name="Month" key_column="month" key_type="i8" name_column="month_name_en">
+                    <LocalizedAttr attr="name_column" locale="es" value="month_name_es" />
                 </Level>
-                <Level name="Day" key_column="date_id" name_column="day_name_en" key_type="nontext">
-                    <Property name="Day ES" key_column="day_name_es"  />
+                <Level name="Day" key_column="date_id" name_column="day_name_en" key_type="i8">
+                    <LocalizedAttr attr="name_column" locale="es" value="day_name_es" />
                 </Level>
             </Hierarchy>
 
             <Hierarchy name="Fiscal Time" primary_key="date_id">
                 <Table name="dim_date" />
-                <Level name="Fiscal Year" key_column="year" key_type="nontext" />
-                <Level name="Fiscal Quarter" key_column="quarter" key_type="text" />
-                <Level name="Fiscal Day" key_column="date_id" name_column="day_name" key_type="nontext" />
+
+                <Level name="Fiscal Year" key_column="year" key_type="i16" />
+                <Level name="Fiscal Quarter" key_column="quarter" key_type="i8" />
+                <Level name="Fiscal Day" key_column="date_id" key_type="i8" name_column="day_name" />
             </Hierarchy>
         </Dimension>
 
@@ -29,8 +31,9 @@
         <Dimension name="Origin Country" foreign_key="origin_country_id">
             <Hierarchy name="Origin Country" primary_key="country_id">
                 <Table name="dim_country" />
-                <Level name="Origin Country" key_column="country_id" name_column="country_name">
-                    <Property name="Origin Country ISO 2" key_column="country_iso2" caption_set="en" />
+
+                <Level name="Origin Country" key_column="country_id" key_type="str" name_column="country_name">
+                    <Property name="Origin Country ISO 2" key_column="country_iso2" />
                 </Level>
             </Hierarchy>
         </Dimension>
@@ -39,8 +42,9 @@
         <Dimension name="Destination Country" foreign_key="destination_country_id">
             <Hierarchy name="Destination Country" primary_key="country_id">
                 <Table name="dim_country" />
-                <Level name="Destination Country" key_column="country_id" name_column="country_name">
-                    <Property name="Destination Country ISO 2" key_column="country_iso2" caption_set="en" />
+
+                <Level name="Destination Country" key_column="country_id" key_type="str" name_column="country_name">
+                    <Property name="Destination Country ISO 2" key_column="country_iso2" />
                 </Level>
             </Hierarchy>
         </Dimension>
@@ -49,8 +53,9 @@
         <Dimension name="Product" foreign_key="product_id">
             <Hierarchy name="Product" primary_key="product_id">
                 <Table name="dim_product" />
+
                 <Level name="Product" key_column="product_id" name_column="product_name_en">
-                    <Property name="Product Name ES" key_column="product_name_es"  />
+                    <LocalizedAttr attr="name_column" locale="es" value="product_name_es" />
                 </Level>
             </Hierarchy>
         </Dimension>
@@ -59,8 +64,9 @@
         <Dimension name="Product Category" foreign_key="category_id">
             <Hierarchy name="Product Category" primary_key="category_id">
                 <Table name="dim_category" />
+
                 <Level name="Product Category" key_column="category_id" name_column="category_name_en">
-                    <Property name="Product Category ES" key_column="category_name_es" caption_set="es" />
+                    <LocalizedAttr attr="name_column" locale="es" value="category_name_es" />
                 </Level>
             </Hierarchy>
         </Dimension>
@@ -69,8 +75,9 @@
         <Dimension name="Product Color" foreign_key="color_id">
             <Hierarchy name="Product Color" primary_key="color_id">
                 <Table name="dim_color" />
+
                 <Level name="Product Color" key_column="color_id" name_column="color_name_en">
-                    <Property name="Product Color ES" key_column="color_name_es"  />
+                    <LocalizedAttr attr="name_column" locale="es" value="color_name_es" />
                 </Level>
             </Hierarchy>
         </Dimension>
