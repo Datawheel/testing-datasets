@@ -27,7 +27,7 @@
 
         <!--Origin Country Dimension-->
         <Dimension name="Origin Country" foreign_key="origin_country_id">
-            <Hierarchy name="Origin Country" primary_key="origin_country_id">
+            <Hierarchy name="Origin Country" primary_key="country_id">
                 <Table name="dim_country" />
                 <Level name="Origin Country" key_column="country_id" name_column="country_name">
                     <Property name="Origin Country ISO 2" key_column="country_iso2" caption_set="en" />
@@ -37,7 +37,7 @@
 
         <!--Destination Country Dimension-->
         <Dimension name="Destination Country" foreign_key="destination_country_id">
-            <Hierarchy name="Destination Country" primary_key="destination_country_id">
+            <Hierarchy name="Destination Country" primary_key="country_id">
                 <Table name="dim_country" />
                 <Level name="Destination Country" key_column="country_id" name_column="country_name">
                     <Property name="Destination Country ISO 2" key_column="country_iso2" caption_set="en" />
