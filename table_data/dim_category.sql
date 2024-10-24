@@ -6,4 +6,8 @@ CREATE TABLE default.dim_category
 )
 ENGINE = MergeTree
 ORDER BY category_id
-SETTINGS index_granularity = 8192
+SETTINGS index_granularity = 8192;
+
+INSERT INTO default.dim_category
+FROM INFILE '/docker-entrypoint-initdb.d/dim_category.csv'
+FORMAT CSV;

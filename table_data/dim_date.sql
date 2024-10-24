@@ -11,4 +11,8 @@ CREATE TABLE default.dim_date
 )
 ENGINE = MergeTree
 ORDER BY date_id
-SETTINGS index_granularity = 8192
+SETTINGS index_granularity = 8192;
+
+INSERT INTO default.dim_date
+FROM INFILE '/docker-entrypoint-initdb.d/dim_date.csv'
+FORMAT CSV;

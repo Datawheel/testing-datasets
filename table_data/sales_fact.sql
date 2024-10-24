@@ -12,4 +12,8 @@ CREATE TABLE default.sales_fact
 )
 ENGINE = MergeTree
 ORDER BY date_id
-SETTINGS index_granularity = 8192
+SETTINGS index_granularity = 8192;
+
+INSERT INTO default.sales_fact
+FROM INFILE '/docker-entrypoint-initdb.d/sales_fact.csv'
+FORMAT CSV;

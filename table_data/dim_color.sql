@@ -6,4 +6,8 @@ CREATE TABLE default.dim_color
 )
 ENGINE = MergeTree
 ORDER BY color_id
-SETTINGS index_granularity = 8192
+SETTINGS index_granularity = 8192;
+
+INSERT INTO default.dim_color
+FROM INFILE '/docker-entrypoint-initdb.d/dim_color.csv'
+FORMAT CSV;

@@ -1,3 +1,3 @@
-FROM clickhouse/clickhouse-server:21.11
-COPY . /tmp/
-COPY populate.sh /docker-entrypoint-initdb.d/
+FROM clickhouse/clickhouse-server:24.9
+
+COPY ./table_data/ /docker-entrypoint-initdb.d/

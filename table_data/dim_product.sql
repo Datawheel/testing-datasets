@@ -6,4 +6,8 @@ CREATE TABLE default.dim_product
 )
 ENGINE = MergeTree
 ORDER BY product_id
-SETTINGS index_granularity = 8192
+SETTINGS index_granularity = 8192;
+
+INSERT INTO default.dim_product
+FROM INFILE '/docker-entrypoint-initdb.d/dim_product.csv'
+FORMAT CSV;
