@@ -23,14 +23,14 @@ jobs:
     
     - name: Extract tag version
       id: vars
-      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
     - name: Build Docker image
       run: |
-        docker build -t ghcr.io/Datawheel/fruity-clickhouse:${{ env.VERSION }} .
-        docker tag ghcr.io/Datawheel/fruity-clickhouse:${{ env.VERSION }} ghcr.io/Datawheel/fruity-clickhouse:latest
+        docker build -t ghcr.io/datawheel/fruity-clickhouse:${{ env.VERSION }} .
+        docker tag ghcr.io/datawheel/fruity-clickhouse:${{ env.VERSION }} ghcr.io/datawheel/fruity-clickhouse:latest
 
     - name: Push Docker image
       run: |
-        docker push ghcr.io/Datawheel/fruity-clickhouse:${{ env.VERSION }}
-        docker push ghcr.io/Datawheel/fruity-clickhouse:latest
+        docker push ghcr.io/datawheel/fruity-clickhouse:${{ env.VERSION }}
+        docker push ghcr.io/datawheel/fruity-clickhouse:latest
