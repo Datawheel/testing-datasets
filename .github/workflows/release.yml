@@ -1,0 +1,36 @@
+name: Build and Push fruity-clickHouse image
+
+on: 
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    name: Build and Push a new image version
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout data repository
+      uses: actions/checkout@v4
+
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Extract tag version
+      id: vars
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+    - name: Build Docker image
+      run: |
+        docker build -t ghcr.io/Datawheel/fruity-clickhouse:${{ env.VERSION }} .
+        docker tag ghcr.io/Datawheel/fruity-clickhouse:${{ env.VERSION }} ghcr.io/Datawheel/fruity-clickhouse:latest
+
+    - name: Push Docker image
+      run: |
+        docker push ghcr.io/Datawheel/fruity-clickhouse:${{ env.VERSION }}
+        docker push ghcr.io/Datawheel/fruity-clickhouse:latest
