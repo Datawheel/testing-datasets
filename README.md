@@ -21,8 +21,7 @@ $ docker run -d --name fruity-local -p 8123:8123 -p 9000:9000 --ulimit nofile=26
 
 ## For use in an ARM mac
 Add a platform flag on the Dockerfile
-```
-FROM --platform=linux/amd64 yandex/clickhouse-server:latest
-COPY . /tmp/
-COPY populate.sh /docker-entrypoint-initdb.d/
+```diff
+-FROM docker.io/library/clickhouse:25.1
++FROM --platform=linux/amd64 docker.io/library/clickhouse:25.1
 ```
