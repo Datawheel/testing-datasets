@@ -19,6 +19,9 @@
                 <ip>::/0</ip>
             </networks>
             <profile>readonly</profile>
+            <grants>
+                <query>GRANT CREATE TEMPORARY TABLE ON *.* TO</query>
+            </grants>
         </readonly>
     </users>
 </clickhouse>
