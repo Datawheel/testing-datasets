@@ -1,7 +1,7 @@
 <clickhouse>
     <profiles>
         <readonly>
-            <readonly>1</readonly>
+            <readonly>2</readonly>
             <joined_subquery_requires_alias>0</joined_subquery_requires_alias>
             <max_execution_time>600</max_execution_time>
             <constraints>
@@ -19,9 +19,6 @@
                 <ip>::/0</ip>
             </networks>
             <profile>readonly</profile>
-            <grants>
-                <query>GRANT CREATE TEMPORARY TABLE ON *.* TO</query>
-            </grants>
         </readonly>
     </users>
 </clickhouse>
