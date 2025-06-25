@@ -1,6 +1,6 @@
 name: Build and Push fruity-clickHouse image
 
-on: 
+on:
   push:
     tags:
       - 'v*.*.*'
@@ -20,14 +20,14 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    
+
     - name: Extract tag version
       id: vars
       run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
     - name: Build Docker image
       run: |
-        docker build -t ghcr.io/datawheel/fruity-clickhouse:${{ env.VERSION }} .
+        docker build -t ghcr.io/datawheel/fruity-clickhouse:${{ env.VERSION }} ./fruity
         docker tag ghcr.io/datawheel/fruity-clickhouse:${{ env.VERSION }} ghcr.io/datawheel/fruity-clickhouse:latest
 
     - name: Push Docker image
