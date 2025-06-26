@@ -43,4 +43,4 @@ jobs:
       working-directory: .
 
     - name: Cleanup downloaded files
-      run: rm -f ./gcs-downloads
+      run: rm -rf ./gcs-downloads
