@@ -1,0 +1,44 @@
+name: "Build Testing Datasets to Artifact Registry"
+
+on: workflow_dispatch
+
+env:
+  GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+  GCP_ARTIFACT_REGISTRY_NAME: ${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}
+  GCP_ARTIFACT_REGISTRY_LOCATION: ${{ vars.GCP_ARTIFACT_REGISTRY_LOCATION }}
+  GCP_IMAGE_NAME: ${{ vars.GCP_IMAGE_NAME }}
+  GCP_IMAGE_ENVIRONMENT: ${{ vars.GCP_IMAGE_ENVIRONMENT }}
+
+jobs:
+  build:
+    environment: Testing datasets
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+      
+    - name: Download files from GCS
+      run: |
+        mkdir -p gcs-downloads
+        gsutil -m cp -r gs://testing-datasets/complexity ./gcs-downloads
+
+    - name: Build Docker Image
+      run: |-
+        gcloud builds submit \
+          --quiet \
+          --timeout=30m \
+          --config=cloudbuild.yml \
+          --substitutions=_GCP_PROJECT_ID=${{ env.GCP_PROJECT_ID }},_GCP_ARTIFACT_REGISTRY_NAME=${{ env.GCP_ARTIFACT_REGISTRY_NAME }},_GCP_ARTIFACT_REGISTRY_LOCATION=${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }},_GCP_IMAGE_NAME=${{ env.GCP_IMAGE_NAME }},_GCP_IMAGE_TAG=${{ github.sha }},_GCP_IMAGE_ENVIRONMENT=${{ env.GCP_IMAGE_ENVIRONMENT }}
+      working-directory: .
+
+    - name: Cleanup downloaded files
+      run: rm -rf ./gcs-downloads
