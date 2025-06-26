@@ -1,8 +1,6 @@
 name: "Build Testing Datasets to Artifact Registry"
 
-on:
-  push:
-    branches: [ "testing-datasets" ]
+on: workflow_dispatch
 
 env:
   GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
