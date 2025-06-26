@@ -325,79 +325,79 @@ ORDER BY (time_id, province_id, country_id, trade_flow_id, hs_master_id);
 
 
 INSERT INTO dim_chl_communes
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_chl_communes.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_chl_communes.parquet', 'Parquet');
 
 INSERT INTO dim_chl_payment_types
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_chl_payment_types.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_chl_payment_types.parquet', 'Parquet');
 
 INSERT INTO dim_chl_ports_of_entry
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_chl_ports_of_entry.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_chl_ports_of_entry.parquet', 'Parquet');
 
 INSERT INTO dim_chl_transport_modes
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_chl_transport_modes.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_chl_transport_modes.parquet', 'Parquet');
 
 INSERT INTO dim_country
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_country.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_country.parquet', 'Parquet');
 
 INSERT INTO dim_esp_provinces
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_esp_provinces.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_esp_provinces.parquet', 'Parquet');
 
 INSERT INTO dim_hs4
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_hs4.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_hs4.parquet', 'Parquet');
 
 INSERT INTO dim_shared_hs96
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_shared_hs96.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_shared_hs96.parquet', 'Parquet');
 
 INSERT INTO dim_shared_master_hs6
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_shared_master_hs6.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_shared_master_hs6.parquet', 'Parquet');
 
 INSERT INTO dim_shared_time
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_shared_time.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_shared_time.parquet', 'Parquet');
 
 INSERT INTO dim_shared_time_currency
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_shared_time_currency.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_shared_time_currency.parquet', 'Parquet');
 
 INSERT INTO dim_skill
-    SELECT * FROM file('/docker-entrypoint-initdb.d/dim_skill.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/dim_skill.parquet', 'Parquet');
 
 INSERT INTO emissions
-    SELECT * FROM file('/docker-entrypoint-initdb.d/emissions.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/emissions.parquet', 'Parquet');
 
 INSERT INTO gini
-    SELECT * FROM file('/docker-entrypoint-initdb.d/gini.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/gini.parquet', 'Parquet');
 
 INSERT INTO national_exports
-    SELECT * FROM file('/docker-entrypoint-initdb.d/national_exports.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/national_exports.parquet', 'Parquet');
 
 INSERT INTO onet_by_pums
-    SELECT * FROM file('/docker-entrypoint-initdb.d/onet_by_pums.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/onet_by_pums.parquet', 'Parquet');
 
 INSERT INTO pums_dims_soc
-    SELECT * FROM file('/docker-entrypoint-initdb.d/pums_dims_soc.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/pums_dims_soc.parquet', 'Parquet');
 
 INSERT INTO shapes2017_counties
-    SELECT * FROM file('/docker-entrypoint-initdb.d/shapes2017_counties.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/shapes2017_counties.parquet', 'Parquet');
 
 INSERT INTO shapes2017_msas
-    SELECT * FROM file('/docker-entrypoint-initdb.d/shapes2017_msas.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/shapes2017_msas.parquet', 'Parquet');
 
 INSERT INTO shapes2017_places
-    SELECT * FROM file('/docker-entrypoint-initdb.d/shapes2017_places.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/shapes2017_places.parquet', 'Parquet');
 
 INSERT INTO shapes2017_pumas
-    SELECT * FROM file('/docker-entrypoint-initdb.d/shapes2017_pumas.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/shapes2017_pumas.parquet', 'Parquet');
 
 INSERT INTO shapes2017_states
-    SELECT * FROM file('/docker-entrypoint-initdb.d/shapes2017_states.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/shapes2017_states.parquet', 'Parquet');
 
 INSERT INTO shapes2017_us
-    SELECT * FROM file('/docker-entrypoint-initdb.d/shapes2017_us.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/shapes2017_us.parquet', 'Parquet');
 
 INSERT INTO trade_i_baci_a_96
-    SELECT * FROM file('/docker-entrypoint-initdb.d/trade_i_baci_a_96.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/trade_i_baci_a_96.parquet', 'Parquet');
 
 INSERT INTO trade_s_chl_m_hs
-    SELECT * FROM file('/docker-entrypoint-initdb.d/trade_s_chl_m_hs.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/trade_s_chl_m_hs.parquet', 'Parquet');
 
 INSERT INTO trade_s_esp_m_hs
-    SELECT * FROM file('/docker-entrypoint-initdb.d/trade_s_esp_m_hs.parquet', 'Parquet');
+    SELECT * FROM file('/var/lib/clickhouse/user_files/trade_s_esp_m_hs.parquet', 'Parquet');
